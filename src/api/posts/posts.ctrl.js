@@ -52,7 +52,7 @@ export const write = async ctx => {
   });
 
   // 검증 후, 검증 실패시 에러처리
-  const result = Joi.validate(ctx.request.body, schema);
+  const result = schema.validate(ctx.request.body);
   if (result.error) {
     ctx.status = 400; // Bad Request
     ctx.body = result.error;
@@ -151,7 +151,7 @@ export const update = async ctx => {
   });
 
   // 검증 후, 검증 실패시 에러처리
-  const result = Joi.validate(ctx.request.body, schema);
+  const result = schema.validate(ctx.request.body);
   if (result.error) {
     ctx.status = 400; // Bad Request
     ctx.body = result.error;
